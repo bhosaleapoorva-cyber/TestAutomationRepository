@@ -1,4 +1,4 @@
-package TestAutomationSuite;
+package TestAutomationSuite.TestsDirectory;
 
 
 import java.time.Duration;
@@ -15,12 +15,13 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import TestAutomationSuite.BaseObjectDirectory.BaseClass;
 import TestAutomationSuite.Pageobjects.LoginPage;
 import TestAutomationSuite.Pageobjects.NavigationOptions;
 import TestAutomationSuite.Pageobjects.ProductCatalogue;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class StandAloneTest {
+public class StandAloneTest extends BaseClass {
 
 	public static void main(String[] args) {
 		
@@ -30,10 +31,10 @@ public class StandAloneTest {
 
 		
 
-		WebDriverManager.chromedriver().setup();
-		WebDriver driver=new ChromeDriver();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));	
-		driver.manage().window().maximize();			
+//		WebDriverManager.chromedriver().setup();
+//		WebDriver driver=new ChromeDriver();
+//		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));	
+//		driver.manage().window().maximize();			
 		LoginPage loginpage=new LoginPage(driver);
 		ProductCatalogue productCatalogue=new ProductCatalogue(driver);
 		NavigationOptions navigator=new NavigationOptions(driver);
