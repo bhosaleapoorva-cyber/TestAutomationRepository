@@ -28,11 +28,25 @@ public class LoginPage extends AbstractMethods{
 	@FindBy(css="input#login")
 	WebElement login;
 	
-	public void loginApplication(String email1,String password1) {
+	@FindBy(css="#toast-container")
+	WebElement toastMessage;
+
+	@FindBy(css="[class*='flyInOut']")
+	WebElement ErrorMessage;
+	
+	public ProductCatalogue loginApplication(String email1,String password1) {
 		email.sendKeys(email1);
 		password.sendKeys(password1);
 		login.click();
+		waitForElementToDisappear(toastMessage);
+		ProductCatalogue productCatalogue=new ProductCatalogue(driver);
+		return productCatalogue;
 	}
+	
+	public String ErrorMessageValidate() {
+		waitForElementToAppear(ErrorMessage);
+	 return  ErrorMessage.getText();
+	   }
 	
 	public void goToUrl(String url) {
 		driver.get(url);

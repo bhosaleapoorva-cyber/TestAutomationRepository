@@ -61,12 +61,14 @@ public class ProductCatalogue extends AbstractMethods {
 
 	}
 
-	public void addToCart(String productName)  {
+	public NavigationOptions addToCart(String productName)  {
 		WebElement productNm = getProductByName(productName);
 		moveToElement(productNm.findElement(addProductToCart));
 		productNm.findElement(addProductToCart).click();
 		waitForElementToAppear(toastMessage);
 		waitForElementToDisappear(spinner);
+		NavigationOptions navigator=new NavigationOptions(driver);
+		return navigator;
 		
 	}
 	
@@ -76,6 +78,7 @@ public class ProductCatalogue extends AbstractMethods {
 //		Assert.assertTrue(match);
 		checkoutButton.click();
 	}
+	
 	
 	public void placeOrder(String countryInputVal) {
 		sendKeysToElement(countryInput,countryInputVal);

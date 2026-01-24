@@ -5,6 +5,7 @@ import java.time.Duration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.devtools.idealized.Javascript;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -14,19 +15,26 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class AbstractMethods {
 
 	WebDriver driver;
-
+	
 	
 	public AbstractMethods(WebDriver driver) {
 		this.driver=driver;
 		PageFactory.initElements(driver,this);
+		
+		
 	}
 
-	
+	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(5));
 	
 	
 	public void waitForElementToAppear(By findBy){	
 	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(5));
 	wait.until(ExpectedConditions.visibilityOfElementLocated(findBy));
+	}
+	
+	public void waitForElementToAppear(WebElement element1){	
+	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(5));
+	wait.until(ExpectedConditions.visibilityOf(element1));
 	}
 	
 
@@ -39,7 +47,7 @@ public class AbstractMethods {
 		Actions action=new Actions(driver);
 		action.moveToElement(elementToView).build().perform();
 	}
-	
+
 	public void sendKeysToElement(WebElement element,String inputValue) {
 		Actions action=new Actions(driver);
 		action.sendKeys(element,inputValue).build().perform();
