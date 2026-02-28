@@ -32,7 +32,7 @@ public class LoginPage extends AbstractMethods{
 	WebElement toastMessage;
 
 	@FindBy(css="[class*='flyInOut']")
-	WebElement ErrorMessage;
+	 WebElement ErrorMessage;
 	
 	public ProductCatalogue loginApplication(String email1,String password1) {
 		email.sendKeys(email1);
@@ -43,7 +43,7 @@ public class LoginPage extends AbstractMethods{
 		return productCatalogue;
 	}
 	
-	public String ErrorMessageValidate() {
+	public  String ErrorMessageValidate() {
 		waitForElementToAppear(ErrorMessage);
 	 return  ErrorMessage.getText();
 	   }

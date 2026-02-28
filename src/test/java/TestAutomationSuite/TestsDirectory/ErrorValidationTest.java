@@ -1,5 +1,7 @@
 package TestAutomationSuite.TestsDirectory;
-import TestAutomationSuite.BaseObjectDirectory.TestObjects;
+import TestAutomationSuite.BaseObjectDirectory.TestClassObjects;
+import TestAutomationSuite.Pageobjects.LoginPage;
+
 import java.io.IOException;
 
 import org.testng.Assert;
@@ -14,6 +16,5 @@ public class ErrorValidationTest extends BaseClass {
 		String itemName="ZARA COAT 3";
 		LaunchApplication();
 		loginpage.loginApplication("apurvatest@gmail.com","Eliyxir123!");
-
-		
+	//	Assert.assertEquals("Incorrect email password",ErrorMessageValidate());
 	}}

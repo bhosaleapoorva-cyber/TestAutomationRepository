@@ -1,10 +1,17 @@
 package TestAutomationSuite.BaseObjectDirectory;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Properties;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -12,6 +19,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import TestAutomationSuite.Pageobjects.LoginPage;
 import TestAutomationSuite.Pageobjects.NavigationOptions;
@@ -51,6 +61,23 @@ public class BaseClass {
 
 	}
 	
+//		public void getJsonDataToString(String path) throws IOException {
+//				
+//				//json to string
+//				String json=FileUtils.readFileToString
+//						(new File(System.getProperty("user.directory")+path),StandardCharsets.UTF_8);
+//			
+//					//string to hashmap
+//				ObjectMapper mapper=new ObjectMapper();
+//			List<HashMap<String,String>> maps=	mapper.readValue(json, new TypeReference<List<HashMap<String,String>>>(){
+//					
+//				
+//				
+//				});
+//			return maps;
+//			}
+	
+	@BeforeTest
 	public LoginPage LaunchApplication() throws IOException {
 		driver=InitializeDriver();
 		loginpage=new LoginPage(driver);
@@ -63,9 +90,22 @@ public class BaseClass {
 //		return loginpage1;
 //	}
 //	
+	
+	public String ScreenshotOnFailure(String testcasename,WebDriver driver) throws IOException {
+	TakesScreenshot ts=(TakesScreenshot)driver;
+	File source=ts.getScreenshotAs(OutputType.FILE);
+	File destination=new File(System.getProperty("user.dir"+"\\records\\"+testcasename+".png"));
+	FileUtils.copyFile(source, destination);
+	return System.getProperty("user.dir"+"\\records\\"+testcasename+".png");
+	
+	
+
+	}
 	@AfterMethod(alwaysRun=true)
 	public void TearDown() {
 		driver.close();
 	}
 
+	
+	
 }
