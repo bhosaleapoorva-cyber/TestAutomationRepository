@@ -26,14 +26,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import TestAutomationSuite.Pageobjects.LoginPage;
 import TestAutomationSuite.Pageobjects.NavigationOptions;
 import TestAutomationSuite.Pageobjects.ProductCatalogue;
+import TestAutomationSuite.Pageobjects.SearchingFilters;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseClass {
 
+//	ThreadLocal<WebDriver> driver=new ThreadLocal<>();
 	WebDriver driver;
 	String browserName;
 	String url;
 	public LoginPage loginpage;
+	public SearchingFilters searchf;
 
 	public WebDriver InitializeDriver() throws IOException {
 
@@ -61,26 +64,28 @@ public class BaseClass {
 
 	}
 	
-//		public void getJsonDataToString(String path) throws IOException {
-//				
-//				//json to string
-//				String json=FileUtils.readFileToString
-//						(new File(System.getProperty("user.directory")+path),StandardCharsets.UTF_8);
-//			
-//					//string to hashmap
-//				ObjectMapper mapper=new ObjectMapper();
-//			List<HashMap<String,String>> maps=	mapper.readValue(json, new TypeReference<List<HashMap<String,String>>>(){
-//					
-//				
-//				
-//				});
-//			return maps;
-//			}
+		public List<HashMap<String, String>> getJsonDataToString(String path) throws IOException {
+				
+				//json to string
+				String json=FileUtils.readFileToString
+						(new File(System.getProperty("user.directory")+path),StandardCharsets.UTF_8);
+			
+					//string to hashmap
+				ObjectMapper mapper=new ObjectMapper();
+			List<HashMap<String,String>> maps=	mapper.readValue(json, new TypeReference<List<HashMap<String,String>>>(){
+					
+				
+				
+				});
+			return maps;
+			}
 	
 	@BeforeTest
-	public LoginPage LaunchApplication() throws IOException {
+	public LoginPage LaunchApplication() throws IOException  {
+	
 		driver=InitializeDriver();
 		loginpage=new LoginPage(driver);
+		//searchf=new SearchingFilters(driver);
 		loginpage.goToUrl(url);	
 		return loginpage;
 	}

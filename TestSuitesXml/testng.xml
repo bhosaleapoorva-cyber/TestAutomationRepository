@@ -3,8 +3,9 @@
 <suite parallel= "tests" name="Suite">
   <test thread-count="5" name="Test">
     <classes>
-      <class name="TestAutomationSuite.TestsDirectory.StandAloneTest"/>
-      <class name="TestAutomationSuite.TestsDirectory.ErrorValidationTest"/>
+    <class name="TestAutomationSuite.TestsDirectory.StandAloneTest"/>
+    <class name="TestAutomationSuite.TestsDirectory.StandAloneTest"/>
+     <class name="TestAutomationSuite.TestsDirectory.ErrorValidationTest"/>  
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

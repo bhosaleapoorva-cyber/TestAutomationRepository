@@ -35,7 +35,7 @@ public class Listeners extends BaseClass implements ITestListener {
 	@Override
 	public void onTestFailure(ITestResult result) {
 		ITestListener.super.onTestFailure(result);
-		tsafe.get()).fail(result.getThrowable());
+		tsafe.get().fail(result.getThrowable());
 		String filepath=null;
 		
 		try {

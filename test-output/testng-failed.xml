@@ -3,13 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="TestAutomationSuite.TestsDirectory.ErrorValidationTest">
+      <class name="TestAutomationSuite.TestsDirectory.SearchTest">
         <methods>
-          <include name="ErrorValidation"/>
+          <include name="commonLogin"/>
+          <include name="searchProduct_onTextFilter"/>
+          <include name="searchProduct_minmaxRange"/>
           <include name="TearDown"/>
           <include name="LaunchApplication"/>
         </methods>
-      </class> <!-- TestAutomationSuite.TestsDirectory.ErrorValidationTest -->
+      </class> <!-- TestAutomationSuite.TestsDirectory.SearchTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

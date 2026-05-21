@@ -11,9 +11,10 @@ public class ExtentReporter {
 		ExtentSparkReporter reporter=new ExtentSparkReporter(path);
 		reporter.config().setDocumentTitle("TestAutomation Report");
 		reporter.config().setReportName("Test Cycle Result");
+		reporter.config().setTheme(null);
 		
 		ExtentReports extent=new ExtentReports();
-		extent.attachReporter(reporter);
+		extent.attachReporter(reporter);   ///attach the objects of above configured report over here.
 		extent.setSystemInfo("QA", "Apurva");
 		return extent;
 		

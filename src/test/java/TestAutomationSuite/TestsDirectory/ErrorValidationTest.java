@@ -1,5 +1,4 @@
 package TestAutomationSuite.TestsDirectory;
-import TestAutomationSuite.BaseObjectDirectory.TestClassObjects;
 import TestAutomationSuite.Pageobjects.LoginPage;
 
 import java.io.IOException;

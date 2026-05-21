@@ -32,7 +32,7 @@ public class StandAloneTest extends BaseClass {
 		String[] dressCode={"ZARA COAT 3","ADIDAS ORIGINAL"};
 		String itemName="ZARA COAT 3";
 		String country="India";		
-		loginpage=LaunchApplication();
+//		loginpage=LaunchApplication();   Handled by BeforeTest
 		ProductCatalogue productCatalogue=loginpage.loginApplication(email,password);
 		List<WebElement>itemList=productCatalogue.getProductList();
 		productCatalogue.getProductByName(productname);
@@ -43,7 +43,7 @@ public class StandAloneTest extends BaseClass {
 		
 	}
 	@DataProvider
-	public Object[][] getData() {
+	public Object[][] getData() throws IOException {
 		
 //		HashMap<String,String> hm=new HashMap<String,String>();
 //		hm.put("email","apurvatest@gmail.com");
@@ -55,12 +55,14 @@ public class StandAloneTest extends BaseClass {
 //		hm1.put("email","apurvatest@gmail.com");
 //		hm1.put("password","Elixir123!");
 //		hm1.put("product","ZARA COAT 3");
-		//getJsonDataToString("\"//src/test/java/TestAutomationSuite/TestData/Data.json\"");
+		//List<HashMap<String, String>> o=getJsonDataToString("\"//src/test/java/TestAutomationSuite/TestData/Data.json\"");
 		
-		return new Object[][] {{"apurvatest@gmail.com","Elixir123!","ZARA COAT 3"}};
+		return new Object[][] {
+			{"apurvatest@gmail.com","Elixir123!","ZARA COAT 3"}
+			};
 		//return new Object[][] {{hm},{hm1}};
+		//return  o;
 	}
-	
 	
 	
 }
